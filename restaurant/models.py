@@ -14,8 +14,8 @@ class MenuItem(models.Model):
 
 class Booking(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    reservation_date = models.DateTimeField()
+    reservation_date = models.DateTimeField(unique=True)
     reservation_slot = models.SmallIntegerField(default=10)
 
     def __str__(self):
-        return self.user.first_name
+        return f"{self.user.first_name} on {self.reservation_date}"
